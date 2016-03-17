@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>MO Property</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/skeleton.css">
+  <link rel="stylesheet" href="/css/moprop.css">
+
+  <script src="/jquery.min.js"></script>
+  <script src="/moprop.js"></script>
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/favicon.png">
+
+</head>
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+<div style="background:#fff">
+
+<div class="mopropTop">
+	<div class="container">
+		<div style="float:left;padding-right: 30px; min-width: 300px;"><i class="fa fa-map-marker lgray"></i>&nbsp; Saxonwold Manor, 22 Eastwold Way, Randburg, Johannesburg</div>
+		<div style="float:left;"><i class="fa fa-phone lgray"></i>&nbsp; +27 72 O79 2117</div>
+		<div style="float:right;"><i class="fa fa-facebook lgray"></i> &nbsp;&nbsp;<i class="fa fa-envelope lgray"></i></div>
+	</div>
+</div>
+
+<div class="mopropLogoBanner">
+		<div style="padding-top: 50px; padding-bottom: 50px; text-align: center;">
+			<a href="/"> <img src="/logo.jpg" style="max-width: 100%; width: 500px;"></a>
+		</div>
+</div>
+
+<div class="mopropSearch" style="height: 0;  top: -10px; overflow: all;">
+	<div class="container" style="z-index: 999; ">
+		<div id="mopropSearchBox" style="background: #eaeaea; padding: 0px;  position: relative;">
+
+					<div class="row" >
+				      <select name="locationSelect" class="u-full-width" id="locationList" style="max-width: 290px; float: left; margin: 20px 20px 10px 20px;">
+				      	<option value="" disabled selected>Select location:</option>
+				        <option value="Option 1">Braamfontein</option>
+				        <option value="Option 2">Fourways</option>
+				        <option value="Option 3">Sandton</option>
+				      </select>
+				      
+
+				      <div style="height: 30px; float: left;  margin: 26px 20px 20px 20px;" >
+					      <div id="propSwitchRent" class="gray pointer" style="float:left;padding-right: 5px; font-size: 75%; padding-top: 5px; font-weight: 800;">RENT</div>
+					      <div id="propTypeSwitch" class="threeStageButton" style="float:left;">
+					      	<div id="propType" class="threeStageButtonMid pointer" style="z-index: 1000"></div>
+					      </div>
+					      <div id="propSwitchBuy" class="gray pointer" style="float:left; padding-left: 5px;font-size: 75%; padding-top: 5px; font-weight: 800;">BUY</div>
+				      </div>
+			      </div>
+
+			      <div class="row" style="margin: 0px 20px 0px 20px; padding: 0 0 20px 0;">
+			      	<div class="gray" style="font-weight: 800;float: left; margin-right: 10px;">PRICE RANGE:
+			      		
+			      	</div>
+			      	<div id="propPriceRange" style="  font-weight: 800; float: left;color:#3670b2;">
+			      		R 8000 - 12000
+			      	</div>
+			      </div>
+
+
+			      <div id="mopropPriceBarSliderButtonLeft" class="mopropPriceBarSliderButton" style="position: absolute; bottom: -10px; left:20px; z-index: 1500; cursor: pointer;"></div>
+			      <div id="mopropPriceBarSliderButtonRight" class="mopropPriceBarSliderButton" style="position: absolute; bottom: -10px; left:50px; z-index: 1500; cursor: pointer;"></div>
+
+			      <div id="mopropPriceBar" style="background: #d0d0d0; height: 5px;  position: absolute; bottom: 0; margin-left: 20px; margin-right: 20px; width:100%; ">
+			      			<div id="mopropPriceBarValue" style="height:5px; background: #3670b2; width: 100px;"></div>
+			      </div>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div class="moprop" style="clear:both;">
+	<div class="container" style="padding-top: 50px; padding-bottom: 100px;">
+
+	  <!-- columns should be the immediate child of a .row -->
+	  <div id="mopropertyholder" class="row mopropresprow" ></div>
+
+	  
+
+  </div>
+</div>
+
+
+<div class="mopropAgent" style="background: #000;">
+	<div class="container">
+		<div class="row" >
+			<div class="column one-third">
+				 <img src="/markagent.jpg" style="width: 100%; height: 100%">
+			</div>
+			<div class="column two-thirds" style="margin-top:50px; margin-bottom: 50px;">
+				<span style="font-size: 20px; font-weight: 200; text-transform: uppercase;">Mark Otto</span><br>
+				<span style="font-size: 30px; font-weight: 800; text-transform: uppercase;">Your personal agent</span><br>
+				<span>For any property matters in the Gauteng area</span><br><br>
+				<a href="/contact"><button>Get Agent Help</button></a>
+			</div>
+
+		</div>
+
+	</div>
+</div>
+
+
+<!-- MOPROP PROPERTY BOXES END 
+<div class="mopropListadd">
+	<div class="container" style="margin-top: 20px; margin-bottom: 20px;">
+		<div class="row">
+
+			<div class="column two-thirds">
+				<span style="color: #212121; font-size: 24px; font-weight: 800; text-transform: uppercase; float:left;">LIST YOUR PROPERTY FOR SALE OR RENT</span>
+				<span style="color: #908b8b; font-size: 16px; font-weight: 200; float:left;">Super quick and easy. Type in your phone or email and we’ll contact you.</span>
+			</div>
+
+			<div class="column one-third">
+				<a href="/submit"><button style="margin-top: 15px; width: 100%;">SUBMIT PROPERTY</button></a>
+			</div>
+		</div>
+
+
+	
+
+
+	</div>
+</div>
+
+MOPROP PROPERTY BOXES END -->
+</div>
+
+<div class="mopropBottom" style="display:none;">
+	<div class="container" >
+		<div id="mopropFooterAdmin" class="mopropFooter" style="text-align: right;"></div>
+
+		<div id="bitlab" ><a  href="http://bitlab.io">BUILT BY BITLAB.IO</a></div>
+		<style>
+			#bitlab {  text-align: center; padding: 20px; }
+			#bitlab a{ color: #444; text-decoration: none; font-weight: 800; }
+			#bitlab a:hover { color: #666; }
+		</style>
+	</div>
+</div>
+
+
+<!-- MOPROP PROPERTY BOXES END -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

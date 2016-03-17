@@ -1,0 +1,230 @@
+* {
+	user-select: none;
+ -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* IE/Edge */	
+}
+
+body { background: #212121; }
+.mopropLogoBanner {
+	background: #fff;
+}
+.mopropTop {
+	background: #f7f7f7;
+	color: #727272;
+	text-transform: uppercase;
+	font-size: 75%;
+	padding: 10px;
+}
+
+.moprop {
+	background: #f7f7f7;
+	color: #4e4e4e;
+}
+
+.mopropBox {
+	background: #fefefe;
+}
+
+.mopropBoxTitle {
+	text-transform: uppercase;
+	padding: 15px 20px 10px 20px;
+	height: 45px;
+	
+}
+
+.mopropBoxDesc {
+	font-size: 85%;
+	color: #7e7e7e;
+	padding: 15px 20px 10px 20px;
+	line-height: 30px;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.lgray {
+	color: #b6b6b6;
+}
+
+.gray {
+	color: #8a8a8a;
+}
+
+/* PROPERTY LISTING BOXES */
+
+.mopropTagToLet {
+	float:right; 
+	margin: 10px; 
+	color: #fff;
+	background: #3670b2; 
+	padding: 5px;
+	font-weight: 800;
+	font-size: 75%;
+}
+
+.mopropTagForSale {
+	float:right; 
+	margin: 10px; 
+	color: #fff;
+	background: #be0121; 
+	padding: 5px;
+	font-weight: 800;
+	font-size: 75%;
+}
+
+.mopropSmall {
+	color: #8b8b8b;
+}
+
+.mopropSmall:hover {
+	color: #8b8b8b;
+}
+
+.mopropBoxImageBox {
+  min-height: 150px;
+}
+
+.mopropBoxImage {
+	width: 100%;
+}
+
+/* Custom sizing for property boxes 3, 2, 1 */
+.mopropBoxResponsive {
+  width: 100%;
+  float: left;
+  box-sizing: border-box; 
+  margin-top:30px;
+  cursor: pointer;
+}
+
+.mopropresprow { margin-left:0; }
+
+@media (min-width: 550px) {
+
+	.mopropBoxResponsive { margin-left: 4%;  width: 46%; font-size: 70%;}
+	.mopropresprow { margin-left: -4%; }
+}
+
+/* Larger than tablet */
+@media (min-width: 900px) {
+	.mopropBoxResponsive { margin-left: 4%;  width: 29.3333333%; font-size: 90%;}
+}
+
+
+
+/* PROPERTY AGENT BOX */
+
+.mopropAgent {
+	background-color: #254971; 
+	color:#ffffff;
+}
+
+.mopropAgent button {
+	color: #fff;
+	background-color: #3c6a9f;
+	border: none;
+	cursor: pointer;
+}
+
+.mopropAgent button:hover {
+	color: #3c6a9f;
+	background-color: #fff;
+	cursor: pointer;
+}
+
+
+/* LIST ADD */
+
+.mopropListadd button {
+	background-color: #be0121;
+	color: #fff;
+	border: none;
+	cursor: pointer;	
+	border: 1px solid #be0121;
+}
+
+.mopropListadd button:hover {
+	color: #be0121;
+	background-color: #fff;	
+
+}
+
+/* BOTTOM BOX */
+
+.mopropBottom {
+	background-color: #212121;
+	color: #b6b6b6;
+	min-height: 100px;
+}
+
+.mopropFooter { padding: 20px; text-transform: uppercase;}
+.mopropFooter a { text-decoration: none; color: #b2b2b2; font-size: 12px;}
+
+/* SEARCH BOX */
+
+.threeStageButton {
+	background: #d0d0d0;
+	border-radius: 12.5px;
+	width: 40px;
+	height: 25px; 
+	padding-top: 1.0px;}
+
+.threeStageButtonMid {
+	background: #3670b2;
+	border-radius: 50%;
+	width: 24px;
+	height: 24px; 
+}
+
+.mopropPriceBarSliderButton {
+	background: #3670b2;
+	border-radius: 50%;
+	width: 24px;
+	height: 24px; 
+}
+
+/*	PROPERTY VIEW */
+
+.mopropViewImageLarge {
+	overflow: hidden;
+
+}
+
+.mopropViewImageLarge img{ width: 100%;}
+
+.blue { color: #3a5e8e; }
+.bluebg { background: #3a5e8e; }
+
+.mopropFooter i { font-size: 30px; }
+
+button.bluebutton  {
+	color: #fff;
+	background-color: #3a5e8e;
+	border: none;
+	cursor: pointer;
+}
+
+button.bluebutton:hover {
+	color: #fff;
+	background-color: #3d689b;
+	cursor: pointer;
+}
+
+button.redbutton  {
+	color: #eee;
+	background-color: #be0121;
+	border: none;
+	cursor: pointer;
+}
+
+button.redbutton:hover {
+	color: #fff;
+	background-color: #da080d;
+	cursor: pointer;
+}
+
+

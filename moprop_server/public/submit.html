@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Add Property</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/moprop.css">
+
+  <script src="jquery.min.js"></script>
+  <script src="moprop_submit.js"></script>
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+</head>
+<body class="bluebg">
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+
+
+
+<div>
+		<div style="margin-top: 50px; margin-bottom: 50px; text-align: center;">
+			<span style="color: #fff; font-size: 24px; font-weight: 800; text-transform: uppercase; text-align: center;">ADD PROPERTY FORM:</span>
+		</div>
+</div>
+
+<div class="mopropSearch">
+	<div class="container" style="z-index: 999; ">
+		<div id="mopropSearchBox" style="background: #eaeaea; padding: 0px;  position: relative;">
+
+				<div class="row" style="padding: 20px 20px 10px 20px;">
+			      <input class="u-full-width" type="text" placeholder="Short Description" id="propInName" >
+			    </div>
+
+				<div class="row" style="padding: 0px 20px 10px 20px;">
+			      <input class="u-full-width" type="text" placeholder="Location" id="propInLocation" >
+			    </div>
+
+				<div class="row" style="margin: 10px 0px 0px 20px;">
+
+					    <div class="gray" style="font-weight: 800;float: left;"><input class="u-full-width" type="text" placeholder="Price in Rands" id="propInPrice" style='font-weight: 400;width: 300px; ' >	
+			      		</div>
+
+
+				      <div style="float: left;  margin: 7px 20px 10px 20px;" >
+					      <div id="propSwitchRent" class="gray pointer" style="float:left;padding-right: 5px; font-size: 75%; padding-top: 5px; font-weight: 800;">RENT</div>
+					      <div id="propTypeSwitch" class="threeStageButton" style="float:left;">
+					      	<div id="propType" class="threeStageButtonMid pointer" style="z-index: 1000"></div>
+					      </div>
+					      <div id="propSwitchBuy" class="gray pointer" style="float:left; padding-left: 5px;font-size: 75%; padding-top: 5px; font-weight: 800;">BUY</div>
+				      </div>
+			    </div>
+
+			    <div class="row" style="margin: 0px 20px 10px 20px; ">
+<input class="u-full-width" type="text" placeholder="bed" id="propInBed" style="margin: 10px 10px 0 0; width: 75px;">
+<input class="u-full-width" type="text" placeholder="bath" id="propInBath" style="margin: 10px 10px 0 0; width: 75px;">
+<input class="u-full-width" type="text" placeholder="garage" id="propInGarage" style="margin: 10px 10px 0 0; width: 75px;">
+<input class="u-full-width" type="text" placeholder="m²" id="propInSqm" style="margin: 10px 10px 0 0; width: 75px;">
+			     </div>
+
+
+			     <div class="row" style="margin: 10px 20px 10px 20px; ">
+			    	 <textarea class="u-full-width" placeholder="Longer Description" id="propInLong" style="resize: vertical;"></textarea>
+			    	 <submit>
+			     </div>
+			     <!--
+			     <div>
+			     	<form action="/fileupload" method="post" enctype="multipart/form-data">
+			     		<input type="file" name="displayImage">
+			     		 <input type="submit" value="Upload">
+			     	</form>
+			     </div>
+			     -->
+
+			     <div class="row" style="margin: 10px 20px 10px 20px; ">
+			    	 <a href="/"><button style="float:left;">BACK</button></a>
+			    	 <button id="submitSave" style="float:right;">SAVE</button>
+			     </div>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
