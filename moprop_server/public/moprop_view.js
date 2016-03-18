@@ -99,8 +99,10 @@ function checklogin(cb) {
     ).done(function(result) {
       console.log(result);
       if (result.login == "success") {
-        $("#propertymenu").html(`<button id="delete" class="redbutton" style="width: 100%;">DELETE</button>`)
-        
+        var adminmenu = `<button id="taken" class="redbutton" style="width: 100%;">TAKEN/AVAILABLE</button><br>`
+        adminmenu += `<button id="delete" class="redbutton" style="width: 100%;">DELETE</button>`
+        $("#propertymenu").html(adminmenu)
+        $("#taken").click(takenProp);
         $("#delete").click(deleteProp);
         
         cb()
@@ -110,6 +112,18 @@ function checklogin(cb) {
       
     });
   }
+
+function takenProp() {
+  //toggle
+  $.ajax({
+      url: '/api/taken', 
+      type: 'GET', 
+      contentType: 'application/json', 
+      data: JSON.stringify({})}
+    ).done(function(result) {
+      window.location.replace("/");
+    });
+}  
   
 function deleteProp() {
   $.ajax({

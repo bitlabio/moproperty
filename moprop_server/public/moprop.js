@@ -335,8 +335,14 @@ function renderprops(properties) {
 
         if (properties[p].mainimg) {newprop += `/content/`+properties[p].mainimg+`">`} else {newprop += `/blank.jpg">`}
 
-        if (properties[p].propType == 1) { newprop += `<div class="mopropTagToLet" style="z-index: 1001;position: absolute;">RENT</div>`; }
-        if (properties[p].propType == 3) { newprop += `<div class="mopropTagForSale" style="z-index: 1001;position: absolute;">BUY</div>`; }
+        if (properties[p].taken == true) {
+          if (properties[p].propType == 1) { newprop += `<div class="mopropTagToLet" style="z-index: 1001;position: absolute; background:#fa6102;">LET</div>`; }
+          if (properties[p].propType == 3) { newprop += `<div class="mopropTagForSale" style="z-index: 1001;position: absolute; background:#fa6102;">SOLD</div>`; }            
+        } else {
+          if (properties[p].propType == 1) { newprop += `<div class="mopropTagToLet" style="z-index: 1001;position: absolute;">RENT</div>`; }
+          if (properties[p].propType == 3) { newprop += `<div class="mopropTagForSale" style="z-index: 1001;position: absolute;">BUY</div>`; }  
+        }
+        
 
         newprop += `</div>
         <div class="mopropBoxDesc">

@@ -87,6 +87,31 @@ app.get('/api/delete', (req,res) => {
   }
 })
 
+app.get('/api/taken', (req,res) => {
+  if (req.session.hash == lastlogin) {
+    var url = req.get('Referrer')
+    var pid = parseInt(url.split('/').pop())
+    db.properties.findOne({"pid":pid}, (err, result) => {
+      if (result.taken == true) {
+        result.taken = false;
+        db.properties.update({"pid":pid}, result, (err, updated) => {
+          console.log(updated)
+          res.json(updated)
+        });
+      } else {
+        result.taken = true;
+        db.properties.update({"pid":pid}, result, (err, updated) => {
+          console.log(updated)
+          res.json(updated)
+        });        
+      }
+
+    })
+  } else {
+    console.log("ERROR TAKEN/TOGGLE")
+  }
+})
+
 app.post('/api/login', (req, res) => {
   console.log(req.body)
   if (req.body.request == "salt") { 
