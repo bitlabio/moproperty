@@ -1,3 +1,6 @@
+//todo:
+// rescale slider to loaded property prices.
+
 var mouse = {
   x : 0,
   y : 0
@@ -280,22 +283,48 @@ function locationlist(properties) {
 }
 
  /* PROPERTY BOXES IMAGE HOVER */
+ var boxprops = {}
+ boxprops.w = 0
+ boxprops.h = 0
 function applyhover() {
-    $(".mopropBoxResponsive").hover( function() {
-      $(this).find('.mopropBoxImage').animate({
-            width: "+=80",
-            height: "+=80",
-            top: "-=40",
-            left: "-=40"
-        }, 250);
-    }, function() {
-      $(this).find('.mopropBoxImage').animate({
-            width: "-=80",
-            height: "-=80",
-            top: "+=40",
-            left: "+=40"
-        }, 200);
-    });
+  var w = parseInt($(".mopropBoxImageBox").width());
+  var h = parseInt($(".mopropBoxImageBox").height());
+    if ((w > 0)&&(h>0)) { 
+      boxprops.w = w;
+      boxprops.h = h;
+
+      $(".mopropBoxResponsive").hover( function() {
+            
+            var th = $(this).find('.mopropBoxImage').height()
+            var tw = $(this).find('.mopropBoxImage').width()
+            
+
+            if (th*tw > 0) {
+            $(this).find('.mopropBoxImage').animate({
+                  width: "+=80",
+                  height: "+=80",
+                  top: "-=40",
+                  left: "-=40"
+              }, 250);
+              }
+
+            }, function() {
+            
+            var th = $(this).find('.mopropBoxImage').height()
+            var tw = $(this).find('.mopropBoxImage').width()
+            
+            if (th*tw > 0) {            
+              $(this).find('.mopropBoxImage').animate({
+                    width: "-=80",
+                    height: "-=80",
+                    top: "+=40",
+                    left: "+=40"
+                }, 200);
+            }
+              
+
+      });
+    }
 }
 
 function numberWithCommas(x) {
