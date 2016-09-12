@@ -1,6 +1,12 @@
 // https://nodejs.org/en/docs/es6/
 // nodemon --harmony server.js 
 
+var imagemagickOn = true;
+
+if (imagemagickOn == true) {
+  var im = require('imagemagick');
+}
+
 var express = require('express');
 var app = express();
 var path    = require("path");
@@ -178,13 +184,38 @@ var cpUpload = upload.fields([{ name: 'file', maxCount: 1 }, { name: 'gallery', 
       dbprop.mainimg = pid+".jpg"
       
       db.properties.update({"pid":parseInt(pid)}, dbprop, (err, result) => {
-        console.log("updated!")
-        res.end("test");
+
+
+        //RESIZE
+        if (imagemagickOn == true) {
+          console.log("resizing using imagemagick")
+            function(err, stdout){
+              if (err) throw err;
+              console.log('stdout:', stdout);
+              console.log("updated and resized!")
+              res.end("test");              
+            });
+        } else {
+          console.log("updated!")
+          res.end("test");
+        }
+        //ENDRESIZE
+
+
+
       });
       
 
     })
   })
+
+
+
+
+
+
+
+
 
 
   
