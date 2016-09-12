@@ -189,6 +189,7 @@ var cpUpload = upload.fields([{ name: 'file', maxCount: 1 }, { name: 'gallery', 
         //RESIZE
         if (imagemagickOn == true) {
           console.log("resizing using imagemagick")
+          im.convert(["public/content/"+pid+".jpg", '-strip', '-interlace', 'Plane', '-quality','80','-resize','1280x960', "public/content/"+pid+".jpg"], 
             function(err, stdout){
               if (err) throw err;
               console.log('stdout:', stdout);
