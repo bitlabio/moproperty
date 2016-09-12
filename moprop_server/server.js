@@ -2,10 +2,21 @@
 // nodemon --harmony server.js 
 
 var imagemagickOn = true;
+if (process.platform == "win32") {  imagemagickOn = false; }
 
 if (imagemagickOn == true) {
   var im = require('imagemagick');
 }
+
+
+
+
+var enableEmail = true;
+var mailbot = require('./email')
+mailbot.debug = true; 
+
+
+
 
 var express = require('express');
 var app = express();
@@ -165,6 +176,38 @@ app.get('/api/findone', (req, res) => {
   })
 })
 
+
+app.post('/api/contact', (req, res) => {
+  console.log("New contact message:")
+  req.body.timestamp = Date.now();
+  console.log(req.body)
+
+
+
+            //start email
+            if (enableEmail) 
+            {
+              var email = {}
+            email.from = "noreply@moproperty.com";
+            email.fromname = "noreply@moproperty.com";
+            email.rcpt = "markleootto@gmail.com ";
+            email.rcptname = "Mark Otto";
+            /*email.rcpt = "rouan@8bo.org";
+            email.rcptname = "Rouan van der Ende";*/            
+            email.subject = "new moproperty contact form message";
+            email.body = "New message from moproperty contact form:\n\n" + "email: " + req.body.email + "\nphone: "+ req.body.phone + "\nmessage: " + req.body.message + "\n";
+
+            mailbot.sendemail(email, function (data) 
+            {
+              console.log("EMAIL SENT")
+                //db.properties.save(req.body);
+              res.json(req.body.timestamp);              
+            })
+          } 
+          // end email
+
+})
+
 app.post('/api/submit', (req, res) => {
   req.body.pid = Date.now();
   db.properties.save(req.body);
@@ -189,7 +232,11 @@ var cpUpload = upload.fields([{ name: 'file', maxCount: 1 }, { name: 'gallery', 
         //RESIZE
         if (imagemagickOn == true) {
           console.log("resizing using imagemagick")
-          im.convert(["public/content/"+pid+".jpg", '-strip', '-interlace', 'Plane', '-quality','80','-resize','1280x960', "public/content/"+pid+".jpg"], 
+          var imgfilepath = "public/content/"+pid+".jpg"
+
+          var command = [imgfilepath, '-strip', '-interlace', 'Plane', '-quality','80','-resize','1280x960', imgfilepath]
+
+          im.convert(command, 
             function(err, stdout){
               if (err) throw err;
               console.log('stdout:', stdout);

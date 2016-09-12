@@ -220,10 +220,10 @@ function checklogin() {
     ).done(function(result) {
       console.log(result);
       if (result.login == "success") {
-        $("#mopropFooterAdmin").html(`<a href="/submit"> <i class="fa fa-plus blue"> </a>`)
+        $("#mopropFooterAdmin").html(`<a href="/submit"> <i class="fa fa-plus blue"></i> </a>`)
         $(".mopropBottom").show()
       } else {  
-        $("#mopropFooterAdmin").html(`<a href="/login"> <i class="fa fa-plus gray"> </a>`)
+        $("#mopropFooterAdmin").html(`<a href="/login"> <i class="fa fa-plus gray"></i> </a>`)
         $(".mopropBottom").show()
       }
       return result;

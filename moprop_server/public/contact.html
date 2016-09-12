@@ -24,7 +24,6 @@
   <link rel="stylesheet" href="/css/moprop.css">
 
   <script src="/jquery.min.js"></script>
-  <script src="/moprop.js"></script>
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="/favicon.png">
@@ -41,7 +40,7 @@
 	<div class="container">
 		<div style="float:left;padding-right: 30px; min-width: 300px;"><i class="fa fa-map-marker lgray"></i>&nbsp; Saxonwold Manor, 22 Eastwold Way, Randburg, Johannesburg</div>
 		<div style="float:left;"><i class="fa fa-phone lgray"></i>&nbsp; +27 72 O79 2117</div>
-		<div style="float:right;"><i class="fa fa-facebook lgray"></i> &nbsp;&nbsp;<i class="fa fa-envelope lgray"></i></div>
+		<div style="float:right;"><a href="/"><i class="fa fa-home lgray"></i></a></div>
 	</div>
 </div>
 
@@ -50,6 +49,96 @@
 			<a href="/"> <img src="/logo.jpg" style="max-width: 100%; width: 500px;"></a>
 		</div>
 </div>
+
+
+<div class="mopropContact" style="background: #f9f9f9; padding-bottom: 2em; padding-top: 2em;" >
+	<div class="container" style="z-index: 999; ">
+		<div id="mopropContactBox" style="padding: 0px;  position: relative;">
+
+				<div class="row" style="padding: 20px 20px 10px 20px;">
+					<h4 style="font-weight: 600; color: #8c8c8c;"> CONTACT FORM</h4>
+					<p style="color: #8c8c8c;">Send us a message using this quick and easy form. We'll contact you as soon as possible!</p>
+			      <input class="u-full-width" type="text" placeholder="your email address" id="email" >
+			    </div>
+
+				<div class="row" style="padding: 0px 20px 10px 20px;">
+			      <input class="u-full-width" type="text" placeholder="your phone number" id="phone" >
+			    </div>
+
+			     <div class="row" style="margin: 10px 20px 10px 20px; ">
+			    	 <textarea class="u-full-width" placeholder="message" id="message" style="resize: vertical;"></textarea>
+			     </div>
+
+			     <div class="row" style="margin: 10px 20px 10px 20px; ">
+			    	 <button id="submitSave" style="float:right;"><i class="fa fa-envelope"> </i> SEND</button>
+			     </div>
+		</div>
+	</div>
+</div>
+
+
+<script>
+/* CONTACT PAGE */
+$(document).ready(function() 
+{
+	console.log("contact script loaded.")
+ 
+  	$("#submitSave").click( function() {
+  		console.log("sending message.")
+  		$("#submitSave").prop('disabled', true);
+  		$("#submitSave").css('border', '1px solid rgb(235,235,235)');
+  		$("#submitSave").html("sending...")
+
+  		var message = {}
+  		message.email = $("#email").val();
+  		message.phone = $("#phone").val();
+  		message.message = $("#message").val();
+  		
+  		console.log(message)
+
+
+		$.ajax({
+		    url: '/api/contact', 
+		    type: 'POST', 
+		    contentType: 'application/json', 
+		    data: JSON.stringify(message)}
+		).done ( function (result) {
+			$("#mopropContactBox").html("Thank you. We will contact you as soon as possible.")
+		})
+
+
+
+  		/*
+	  	var newprop = {}
+	  	newprop.short = $("#propInName").val();
+	  	newprop.location = $("#propInLocation").val();
+	  	newprop.price = parseInt($("#propInPrice").val());
+	  	newprop.propType = propType;
+	  	newprop.bed = parseInt($("#propInBed").val());
+	  	newprop.bath = parseFloat($("#propInBath").val());
+	  	newprop.car = parseInt($("#propInGarage").val());
+	  	newprop.sqm = parseInt($("#propInSqm").val());
+	  	newprop.long = $("#propInLong").val();
+
+		$.ajax({
+		    url: '/api/submit', 
+		    type: 'POST', 
+		    contentType: 'application/json', 
+		    data: JSON.stringify(newprop)}
+		).done ( function (result) {
+			window.location.replace("/view/"+result);
+		})
+		*/
+  	})
+
+
+});
+
+</script>
+
+
+
+
 
 
 <div class="mopropAgent" style="background: #000;">
@@ -70,6 +159,7 @@
 
 	</div>
 </div>
+
 
 
 <!-- MOPROP PROPERTY BOXES END 
@@ -99,14 +189,10 @@ MOPROP PROPERTY BOXES END -->
 
 <div class="mopropBottom" style="display:none;">
 	<div class="container" >
-		<div id="mopropFooterAdmin" class="mopropFooter" style="text-align: right;"></div>
+		<div id="mopropFooterAdmin" class="mopropFooter" style="text-align: right; font-size: 5px;"></div>
 
 		<div id="bitlab" ><a  href="http://bitlab.io">BUILT BY BITLAB.IO</a></div>
-		<style>
-			#bitlab {  text-align: center; padding: 20px; }
-			#bitlab a{ color: #444; text-decoration: none; font-weight: 800; }
-			#bitlab a:hover { color: #666; }
-		</style>
+
 	</div>
 </div>
 

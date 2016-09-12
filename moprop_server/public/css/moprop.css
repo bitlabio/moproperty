@@ -7,7 +7,9 @@
   -ms-user-select: none;       /* IE/Edge */	
 }
 
-body { background: #212121; }
+body { background: #212121; 
+	letter-spacing: 0.025em;
+}
 .mopropLogoBanner {
 	background: #fff;
 }
@@ -128,6 +130,8 @@ body { background: #212121; }
 	background-color: #3c6a9f;
 	border: none;
 	cursor: pointer;
+
+	font-weight: 800;
 }
 
 .mopropAgent button:hover {
@@ -155,11 +159,7 @@ body { background: #212121; }
 
 /* BOTTOM BOX */
 
-.mopropBottom {
-	background-color: #212121;
-	color: #b6b6b6;
-	min-height: 100px;
-}
+
 
 .mopropFooter { padding: 20px; text-transform: uppercase;}
 .mopropFooter a { text-decoration: none; color: #b2b2b2; font-size: 12px;}
@@ -199,7 +199,18 @@ body { background: #212121; }
 .blue { color: #3a5e8e; }
 .bluebg { background: #3a5e8e; }
 
-.mopropFooter i { font-size: 30px; }
+
+.mopropBottom {
+	background-color: #000;
+	color: #111;
+	min-height: 100px;
+}
+
+.mopropFooter i { font-size: 15px; opacity: 0.5; }
+
+#bitlab {  text-align: center; padding: 20px; }
+#bitlab a{ color: #222; text-decoration: none; font-weight: 800; }
+#bitlab a:hover { color: #333; }
 
 button.bluebutton  {
 	color: #fff;
