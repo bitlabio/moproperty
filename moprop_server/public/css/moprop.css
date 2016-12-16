@@ -14,7 +14,7 @@ body { background: #212121;
 /* GALLERY THUMBNAILS */
 
 
-.thumbs { width: 64px; height:64px; }
+.thumbs { max-height:94px; }
 .thumbholders { 
 	width: 64px; 
 	height:64px; 
@@ -226,14 +226,10 @@ body { background: #212121;
 
 .mopropViewImageLarge img{ width: 100%;}
 
+#mainholder {overflow: hidden;}
 
-.mainimg {
-	position: relative;
-    margin: auto;
-    top: -25%;
-    left: 0;
-    right: 0;
-    bottom: 0;
+#mopropViewImageLargeUpl {
+	margin-top: -100px;
 }
 
 

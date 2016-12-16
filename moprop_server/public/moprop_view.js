@@ -65,7 +65,7 @@ function getprop() {
     //console.log(property) 
     var prophtml = ``
 
-    prophtml += `<div  class="mopropViewImageLarge" class="row" ><img class="mainimg" id="mopropViewImageLargeUpl" src="/`
+    prophtml += `<div id="mainholder" class="mopropViewImageLarge" class="row" ><img class="mainimg" id="mopropViewImageLargeUpl" src="/`
     if (property.mainimg) { prophtml += "content/"+property.mainimg } else { prophtml += `blank.jpg` }
 
     prophtml +=`"></div>`
@@ -154,8 +154,14 @@ function activateThumbs() {
 
   $("#mopropViewImageLargeUpl").attr("src", $(this).attr("src"))
 
-  
-
+  console.log($("#mopropViewImageLargeUpl").height())
+  console.log($("#mainholder").height())
+  if ($("#mopropViewImageLargeUpl").height() > $("#mainholder").height()) {
+    var h = $("#mainholder").height()
+    var hm = $("#mopropViewImageLargeUpl").height()
+    var diff = (hm - h)/2
+    $("#mopropViewImageLargeUpl").attr("margin-top",-diff) 
+  }
   //mopropViewImageLargeUpl
 
   });
