@@ -92,6 +92,79 @@ var scrypt = require("./scrypt.js"); // modified https://github.com/tonyg/js-scr
 var lasthash = ""; //last generated (could be malicious)
 var lastlogin = ""; //last successful (retain!)
 
+
+app.post('/api/mainimg', (req,res) => {
+  console.log("main image")
+  console.log(req.body)
+  if (req.session.hash == lastlogin) {
+
+    var url = req.get('Referrer')
+    var pid = parseInt(url.split('/').pop())
+    
+    db.properties.findOne({"pid":req.body.pid}, (err, page) => {
+      res.json(page)
+
+      //TRY TO DELETE
+      try {
+        page.mainimg = page.gallery[req.body.activeimg]
+        //page.gallery.splice(req.body.activeimg,1)
+
+        db.properties.update({"pid":req.body.pid}, page, (err, result) => {
+          console.log(result)
+          res.end("success")
+        })
+        
+      }
+      catch(err) {
+          console.log(err.message);
+      }
+
+ 
+
+    })
+
+  } else {
+    console.log("ERROR DELETE")
+  }
+})
+
+
+
+app.post('/api/deleteimg', (req,res) => {
+  console.log("delete image")
+  console.log(req.body)
+  if (req.session.hash == lastlogin) {
+
+    var url = req.get('Referrer')
+    var pid = parseInt(url.split('/').pop())
+    
+    db.properties.findOne({"pid":req.body.pid}, (err, page) => {
+      res.json(page)
+
+      //TRY TO DELETE
+      try {
+      
+        page.gallery.splice(req.body.activeimg,1)
+        db.properties.update({"pid":req.body.pid}, page, (err, result) => {
+          console.log(result)
+          res.end("success")
+        })
+        
+      }
+      catch(err) {
+          console.log(err.message);
+      }
+
+ 
+
+    })
+
+  } else {
+    console.log("ERROR DELETE")
+  }
+})
+
+
 app.get('/api/delete', (req,res) => {
   if (req.session.hash == lastlogin) {
     var url = req.get('Referrer')
@@ -231,7 +304,7 @@ var cpUpload = upload.fields([{ name: 'file', maxCount: 1 }, { name: 'gallery', 
       console.log(dbprop)
       dbprop.mainimg = imagename+".jpg"
 
-      dbprop.gallery.push(imagename+".jpg")
+      dbprop.gallery.push(dbprop.mainimg)
       
       db.properties.update({"pid":parseInt(pid)}, dbprop, (err, result) => {
 
@@ -239,7 +312,7 @@ var cpUpload = upload.fields([{ name: 'file', maxCount: 1 }, { name: 'gallery', 
         //RESIZE
         if (imagemagickOn == true) {
           console.log("resizing using imagemagick")
-          var imgfilepath = "public/content/"+pid+".jpg"
+          var imgfilepath = "public/content/"+dbprop.mainimg
 
           var command = [imgfilepath, '-strip', '-interlace', 'Plane', '-quality','80','-resize','1280x960', imgfilepath]
 

@@ -50,7 +50,9 @@ function enableUploadLargeImage() {
 }
 
 
+var activeimg = -1;
 
+var pagedata = {}
 
 function getprop() {
   $.ajax({
@@ -59,6 +61,7 @@ function getprop() {
       contentType: 'application/json', 
       data: JSON.stringify({})}
   ).done(function(property) {
+    pagedata.property = property;
     //console.log(property) 
     var prophtml = ``
 
@@ -72,8 +75,11 @@ function getprop() {
     console.log(property.gallery)
     prophtml +=`<div class="galleryThumbnails row graybg">`
 
+
+
     for (var img in property.gallery) {
         prophtml +=`<div class="thumbholders" ><img class="thumbs" data-imgnum="`+img+`" src="/content/`+property.gallery[img]+`"></div>`
+        activeimg = img
     }
 
     prophtml +=`</div>`
@@ -136,12 +142,14 @@ function getprop() {
 }
     
 
+
 function activateThumbs() {
 
   $( ".thumbs" ).click(function() {
+
   console.log( $(this).attr("data-imgnum") );
   console.log( $(this).attr("src") );
-
+  activeimg = $(this).attr("data-imgnum")
   
 
   $("#mopropViewImageLargeUpl").attr("src", $(this).attr("src"))
@@ -164,10 +172,18 @@ function checklogin(cb) {
       console.log(result);
       if (result.login == "success") {
         var adminmenu = `<button id="taken" class="redbutton" style="width: 100%;">TAKEN/AVAILABLE</button><br>`
-        adminmenu += `<button id="delete" class="redbutton" style="width: 100%;">DELETE</button>`
+        adminmenu += `<button id="mainimg" class="redbutton" style="width: 100%;">SELECT MAIN IMAGE</button>`
+        adminmenu += `<button id="deleteimg" class="redbutton" style="width: 100%;">DELETE IMAGE</button>`
+        adminmenu += `<button id="delete" class="redbutton" style="width: 100%;">DELETE PROPERTY</button>`
+        
         $("#propertymenu").html(adminmenu)
+
         $("#taken").click(takenProp);
+        $("#mainimg").click(mainImage);
+        $("#deleteimg").click(deleteImage);        
         $("#delete").click(deleteProp);
+
+
         
         cb()
       } else {  
@@ -199,6 +215,35 @@ function deleteProp() {
       window.location.replace("/");
     });
 }  
+
+
+function mainImage() {
+  console.log(pagedata)
+  $.ajax({
+      url: '/api/mainimg', 
+      type: 'POST', 
+      contentType: 'application/json', 
+      data: JSON.stringify({"pid": pagedata.property.pid, "activeimg": activeimg})}
+    ).done(function(result) {
+       location.reload();
+    });
+}  
+
+
+function deleteImage() {
+  console.log(pagedata)
+  $.ajax({
+      url: '/api/deleteimg', 
+      type: 'POST', 
+      contentType: 'application/json', 
+      data: JSON.stringify({"pid": pagedata.property.pid, "activeimg": activeimg})}
+    ).done(function(result) {
+       location.reload();
+    });
+}  
+
+
+
 
     function numberWithCommas(x) {
       x = parseInt(x)
