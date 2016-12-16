@@ -5,12 +5,41 @@ $(document).ready(function()
     
 })
 
+var uploads = []
+
 function enableUploadLargeImage() {
   //$("#mopropViewImageLargeUpl").dropzone({ url: "/fileupload", clickable: "#mopropViewImageLargeUpl" });
   var myDropzone = new Dropzone("#mopropViewImageLargeUpl", { url: "/fileupload"} );
   myDropzone.on("success", function(file) {
     location.reload();
   });
+
+  myDropzone.on("uploadprogress", function(progress) {
+    
+    //if (uploads.length == 0) { uploads.push(progress) }
+
+    var found = 0;
+    for (var up in uploads) { 
+      if (uploads[up].name == progress.name) 
+      {
+        uploads[up] = progress;
+        found = 1;
+      } 
+    }
+
+    if (found == 0) { uploads.push(progress) }
+      
+    //console.log(uploads)
+      
+      //render
+      var uploadhtml = ''
+      for (var up in uploads) {
+        uploadhtml += uploads[up].name + " progress:" + Math.round(uploads[up].upload.progress) + "%<br>"
+        
+      }
+      $("#uploadprogress").html(uploadhtml)
+
+  })
 
   $("#mopropViewImageLargeUpl").hover( function () {
     $("#mopropViewImageLargeUpl").css("opacity", "0.5")
@@ -19,6 +48,8 @@ function enableUploadLargeImage() {
     $("#mopropViewImageLargeUpl").css("opacity", "1")
   })
 }
+
+
 
 
 function getprop() {
@@ -31,10 +62,24 @@ function getprop() {
     //console.log(property) 
     var prophtml = ``
 
-    prophtml += `<div  class="mopropViewImageLarge" class="row" ><img id="mopropViewImageLargeUpl" src="/`
+    prophtml += `<div  class="mopropViewImageLarge" class="row" ><img class="mainimg" id="mopropViewImageLargeUpl" src="/`
     if (property.mainimg) { prophtml += "content/"+property.mainimg } else { prophtml += `blank.jpg` }
-    prophtml +=`"></div>
 
+    prophtml +=`"></div>`
+
+    //THUMBNAILS
+
+    console.log(property.gallery)
+    prophtml +=`<div class="galleryThumbnails row graybg">`
+
+    for (var img in property.gallery) {
+        prophtml +=`<div class="thumbholders" ><img class="thumbs" data-imgnum="`+img+`" src="/content/`+property.gallery[img]+`"></div>`
+    }
+
+    prophtml +=`</div>`
+    //INFO
+
+    prophtml +=`
     <div class="mopropViewInfo moprop" class="row">
       <div class="mopropBoxDesc">
       <div style="float: left; text-transform:capitalize;">
@@ -85,10 +130,29 @@ function getprop() {
 
     $("#mopropLargePropData").html(prophtml);
     checklogin(enableUploadLargeImage);
+    activateThumbs();
     
   });
 }
     
+
+function activateThumbs() {
+
+  $( ".thumbs" ).click(function() {
+  console.log( $(this).attr("data-imgnum") );
+  console.log( $(this).attr("src") );
+
+  
+
+  $("#mopropViewImageLargeUpl").attr("src", $(this).attr("src"))
+
+  
+
+  //mopropViewImageLargeUpl
+
+  });
+
+}
 
 function checklogin(cb) {
   $.ajax({

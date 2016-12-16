@@ -220,11 +220,18 @@ var cpUpload = upload.fields([{ name: 'file', maxCount: 1 }, { name: 'gallery', 
   var url = req.get('Referrer')
   var pid = url.split('/').pop()
 
+  var imagename = pid+"_"+Date.now();
+
   //UPLOAD/DB MAIN IMAGE
-  fs.rename(req.files.file[0].path, "public/content/"+pid+".jpg", function() {
+  fs.rename(req.files.file[0].path, "public/content/"+imagename+".jpg", function() {
     db.properties.findOne({"pid":parseInt(pid)}, (err, dbprop) => {
+
+      dbprop.gallery = dbprop.gallery || [];
+
       console.log(dbprop)
-      dbprop.mainimg = pid+".jpg"
+      dbprop.mainimg = imagename+".jpg"
+
+      dbprop.gallery.push(imagename+".jpg")
       
       db.properties.update({"pid":parseInt(pid)}, dbprop, (err, result) => {
 

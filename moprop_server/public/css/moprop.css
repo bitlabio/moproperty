@@ -10,6 +10,34 @@
 body { background: #212121; 
 	letter-spacing: 0.025em;
 }
+
+/* GALLERY THUMBNAILS */
+
+
+.thumbs { width: 64px; height:64px; }
+.thumbholders { 
+	width: 64px; 
+	height:64px; 
+	overflow:hidden; 
+	float:left;
+	border: 3px solid #dfdfdf;
+	border-radius: 3px;
+	/*border: 3px solid #165ba7;*/
+	opacity: 0.67;
+	cursor: pointer;
+	margin: 7px 0 7px 7px;
+}
+
+.thumbholders:hover { 
+	opacity: 1;
+	border: 3px solid #165ba7;
+}
+
+.graybg { background: #efefef; }
+
+
+/* TOP BANNER */
+
 .mopropLogoBanner {
 	background: #fff;
 }
@@ -189,12 +217,25 @@ body { background: #212121;
 
 /*	PROPERTY VIEW */
 
+
+
 .mopropViewImageLarge {
 	overflow: hidden;
-
+	height: 540px;
 }
 
 .mopropViewImageLarge img{ width: 100%;}
+
+
+.mainimg {
+	position: relative;
+    margin: auto;
+    top: -25%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
 
 .blue { color: #3a5e8e; }
 .bluebg { background: #3a5e8e; }
