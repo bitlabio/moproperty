@@ -3,6 +3,7 @@ $(document).ready(function()
 {
     getprop();
     
+
 })
 
 var uploads = []
@@ -135,13 +136,54 @@ function getprop() {
     </div>` 
 
     $("#mopropLargePropData").html(prophtml);
+
+    $("#mopropViewImageLargeUpl").load( function() {
+        $(this).attr("width", "")
+        $(this).attr("height", "")      
+        console.log("sizing main image")
+        console.log("loaded image")
+        
+        var imgh = $(this).height()
+        var imgw = $(this).width()
+        var imga = imgw/imgh
+
+        var w = $("#mainholder").width()
+        var h = $("#mainholder").height()     
+        var a = w/h
+
+        if (imga > a) { 
+          console.log("horizontal")
+          $(this).attr("position", "absolute")
+          $(this).attr("height", h) 
+          $(this).attr("width", Math.round(h/imgh * imgw) )
+        } else {
+          console.log("vertical")
+          $(this).attr("position", "absolute")
+          $(this).attr("width", w) 
+          $(this).attr("height", Math.round(w/imgw * imgh) )
+        }
+
+        
+
+        //
+
+       
+
+  
+        
+
+    })
+
     checklogin(enableUploadLargeImage);
     activateThumbs();
+
+
+
+    
     
   });
 }
     
-
 
 function activateThumbs() {
 
@@ -152,18 +194,11 @@ function activateThumbs() {
   activeimg = $(this).attr("data-imgnum")
   
 
-  $("#mopropViewImageLargeUpl").attr("src", $(this).attr("src"))
+    $("#mopropViewImageLargeUpl").attr("src", $(this).attr("src"))
 
-  console.log($("#mopropViewImageLargeUpl").height())
-  console.log($("#mainholder").height())
-  if ($("#mopropViewImageLargeUpl").height() > $("#mainholder").height()) {
-    var h = $("#mainholder").height()
-    var hm = $("#mopropViewImageLargeUpl").height()
-    var diff = (hm - h)/2
-    $("#mopropViewImageLargeUpl").attr("margin-top",-diff) 
-  }
-  //mopropViewImageLargeUpl
 
+
+    
   });
 
 }

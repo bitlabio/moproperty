@@ -224,14 +224,13 @@ body { background: #212121;
 	height: 540px;
 }
 
-.mopropViewImageLarge img{ width: 100%;}
 
-#mainholder {overflow: hidden;}
+
+#mainholder {overflow: hidden; position: relative;}
 
 #mopropViewImageLargeUpl {
-	margin-top: -100px;
+	position: absolute;
 }
-
 
 .blue { color: #3a5e8e; }
 .bluebg { background: #3a5e8e; }
